@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Career Assessment</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+  <style>
+    :root {
+      --primary: #003366;
+      --accent: #FFD700;
+      --success: #2ecc71;
+      --bg: #f4f7fa;
+      --card-bg: #ffffff;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', system-ui, sans-serif;
+    }
+
+    body {
+      background: var(--bg);
+      color: #2d3436;
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--primary) 0%, #002244 100%);
+      color: white;
+      padding: 2rem;
+      text-align: center;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .assessment-container {
+      max-width: 1000px;
+      margin: 2rem auto;
+      padding: 2rem;
+    }
+
+    .question-grid {
+      display: grid;
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .question-card {
+      background: var(--card-bg);
+      padding: 2rem;
+      border-radius: 1.5rem;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+      opacity: 0;
+      transform: translateY(20px);
+      animation: cardEntrance 0.6s ease forwards;
+    }
+
+    .question-number {
+      font-size: 1.2rem;
+      color: var(--primary);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .options-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .option {
+      padding: 1.2rem;
+      border: 2px solid #e0e0e0;
+      border-radius: 0.8rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .option.selected {
+      border-color: var(--accent);
+      background: rgba(255, 215, 0, 0.1);
+    }
+
+    .btn {
+      background: var(--primary);
+      color: white;
+      padding: 1rem 2.5rem;
+      border: none;
+      border-radius: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin: 2rem auto;
+      display: block;
+    }
+
+    .chart-container {
+      background: white;
+      border-radius: 1.5rem;
+      padding: 2rem;
+      margin: 3rem auto;
+      max-width: 800px;
+      display: none;
+    }
+
+    @keyframes cardEntrance {
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1><i class="fas fa-user-graduate"></i> Career Aptitude Test</h1>
+  </header>
+
+  <section class="assessment-container">
+    <div class="question-grid">
+      <!-- Doctor -->
+      <div class="question-card" data-category="Doctor" style="animation-delay: 0.2s">
+        <div class="question-number"><i class="fas fa-hospital"></i> Medical Aptitude</div>
+        <h3>I enjoy helping people and have strong empathy</h3>
+        <div class="options-grid">
+          <div class="option" data-value="5">Strongly Agree</div>
+          <div class="option" data-value="4">Agree</div>
+          <div class="option" data-value="3">Neutral</div>
+          <div class="option" data-value="2">Disagree</div>
+          <div class="option" data-value="1">Strongly Disagree</div>
+        </div>
+      </div>
+
+      <!-- Engineer -->
+      <div class="question-card" data-category="Engineer" style="animation-delay: 0.4s">
+        <div class="question-number"><i class="fas fa-cogs"></i> Engineering</div>
+        <h3>I enjoy solving technical problems and building things</h3>
+        <div class="options-grid">
+          <div class="option" data-value="5">Strongly Agree</div>
+          <div class="option" data-value="4">Agree</div>
+          <div class="option" data-value="3">Neutral</div>
+          <div class="option" data-value="2">Disagree</div>
+          <div class="option" data-value="1">Strongly Disagree</div>
+        </div>
+      </div>
+
+      <!-- Scientist -->
+      <div class="question-card" data-category="Scientist" style="animation-delay: 0.6s">
+        <div class="question-number"><i class="fas fa-flask"></i> Research</div>
+        <h3>I enjoy conducting experiments and analyzing data</h3>
+        <div class="options-grid">
+          <div class="option" data-value="5">Strongly Agree</div>
+          <div class="option" data-value="4">Agree</div>
+          <div class="option" data-value="3">Neutral</div>
+          <div class="option" data-value="2">Disagree</div>
+          <div class="option" data-value="1">Strongly Disagree</div>
+        </div>
+      </div>
+
+      <!-- CA -->
+      <div class="question-card" data-category="CA" style="animation-delay: 0.8s">
+        <div class="question-number"><i class="fas fa-calculator"></i> Finance</div>
+        <h3>I enjoy working with numbers and financial analysis</h3>
+        <div class="options-grid">
+          <div class="option" data-value="5">Strongly Agree</div>
+          <div class="option" data-value="4">Agree</div>
+          <div class="option" data-value="3">Neutral</div>
+          <div class="option" data-value="2">Disagree</div>
+          <div class="option" data-value="1">Strongly Disagree</div>
+        </div>
+      </div>
+
+      <!-- Arts -->
+      <div class="question-card" data-category="Arts" style="animation-delay: 1.0s">
+        <div class="question-number"><i class="fas fa-palette"></i> Creativity</div>
+        <h3>I enjoy creative expression through art/music/writing</h3>
+        <div class="options-grid">
+          <div class="option" data-value="5">Strongly Agree</div>
+          <div class="option" data-value="4">Agree</div>
+          <div class="option" data-value="3">Neutral</div>
+          <div class="option" data-value="2">Disagree</div>
+          <div class="option" data-value="1">Strongly Disagree</div>
+        </div>
+      </div>
+
+      <!-- Business -->
+      <div class="question-card" data-category="Business" style="animation-delay: 1.2s">
+        <div class="question-number"><i class="fas fa-chart-line"></i> Entrepreneurship</div>
+        <h3>I enjoy leading teams and business strategy</h3>
+        <div class="options-grid">
+          <div class="option" data-value="5">Strongly Agree</div>
+          <div class="option" data-value="4">Agree</div>
+          <div class="option" data-value="3">Neutral</div>
+          <div class="option" data-value="2">Disagree</div>
+          <div class="option" data-value="1">Strongly Disagree</div>
+        </div>
+      </div>
+    </div>
+
+    <button class="btn" id="submit-btn"><i class="fas fa-chart-bar"></i> Get Results</button>
+
+    <div class="chart-container">
+      <canvas id="resultChart"></canvas>
+    </div>
+  </section>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Option Selection
+      document.querySelectorAll('.option').forEach(option => {
+        option.addEventListener('click', function() {
+          this.parentElement.querySelectorAll('.option').forEach(opt => {
+            opt.classList.remove('selected');
+          });
+          this.classList.add('selected');
+        });
+      });
+
+      // Form Submission
+      document.getElementById('submit-btn').addEventListener('click', () => {
+        const scores = {
+          Doctor: 0,
+          Engineer: 0,
+          Scientist: 0,
+          CA: 0,
+          Arts: 0,
+          Business: 0
+        };
+
+        // Calculate scores
+        document.querySelectorAll('.question-card').forEach(question => {
+          const category = question.dataset.category;
+          const selected = question.querySelector('.selected');
+          
+          if (selected) {
+            scores[category] += parseInt(selected.dataset.value);
+          } else {
+            alert('Please answer all questions before submitting!');
+            return;
+          }
+        });
+
+        // Show results
+        showResults(scores);
+        confetti({
+          particleCount: 100,
+          spread: 70,
+          origin: { y: 0.6 }
+        });
+      });
+
+      function showResults(scores) {
+        const chartContainer = document.querySelector('.chart-container');
+        chartContainer.style.display = 'block';
+
+        // Destroy previous chart instance if exists
+        if(window.myChart) window.myChart.destroy();
+
+        // Bar Chart
+        window.myChart = new Chart(document.getElementById('resultChart'), {
+          type: 'bar',
+          data: {
+            labels: Object.keys(scores),
+            datasets: [{
+              label: 'Career Aptitude Score',
+              data: Object.values(scores),
+              backgroundColor: [
+                '#003366',
+                '#2ecc71',
+                '#e74c3c',
+                '#9b59b6',
+                '#f1c40f',
+                '#e67e22'
+              ],
+              borderColor: '#fff',
+              borderWidth: 2
+            }]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+              y: {
+                beginAtZero: true,
+                max: 25,
+                ticks: {
+                  color: '#666',
+                  font: {
+                    weight: 'bold'
+                  }
+                }
+              },
+              x: {
+                ticks: {
+                  color: '#444',
+                  font: {
+                    size: 14,
+                    weight: 'bold'
+                  }
+                }
+              }
+            },
+            plugins: {
+              legend: {
+                display: false
+              }
+            }
+          }
+        });
+      }
+    });
+  </script>
+</body>
+</html>

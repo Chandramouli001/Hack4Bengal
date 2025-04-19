@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Career Counselor</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --light: #ecf0f1;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: #f5f6fa;
+            margin: 0;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            padding: 2rem;
+        }
+
+        .question-card {
+            display: none;
+            animation: fadeIn 0.5s;
+        }
+
+        .active-question {
+            display: block;
+        }
+
+        .options-grid {
+            display: grid;
+            gap: 1rem;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        }
+
+        .option {
+            padding: 1rem;
+            border: 2px solid var(--light);
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .option:hover {
+            transform: translateY(-3px);
+            border-color: var(--secondary);
+        }
+
+        .progress-bar {
+            height: 8px;
+            background: var(--light);
+            border-radius: 4px;
+            margin: 2rem 0;
+        }
+
+        .progress {
+            height: 100%;
+            background: var(--secondary);
+            transition: width 0.5s ease;
+        }
+
+        .result-card {
+            display: none;
+            margin-top: 2rem;
+        }
+
+        .chart-container {
+            margin: 2rem 0;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="question-container">
+            <!-- Questions will be dynamically inserted here -->
+        </div>
+        <div class="result-card" id="result-card">
+            <h2>Career Analysis Report</h2>
+            <div class="chart-container">
+                <canvas id="careerChart"></canvas>
+            </div>
+            <div id="career-details"></div>
+        </div>
+    </div>
+
+    <script>
+        const careerData = {
+            questions: [
+                {
+                    id: 1,
+                    text: "Which subjects do you enjoy the most?",
+                    options: [
+                        { text: "Mathematics & Physics", careers: { engineering: 3, research: 2 } },
+                        { text: "Biology & Chemistry", careers: { medical: 3, biotechnology: 2 } },
+                        { text: "Computer Science", careers: { engineering: 3, data_science: 2 } },
+                        { text: "Arts & Literature", careers: { design: 3, media: 2 } }
+                    ]
+                },
+                {
+                    id: 2,
+                    text: "What type of activities do you prefer?",
+                    options: [
+                        { text: "Problem Solving", careers: { engineering: 2, research: 3 } },
+                        { text: "Helping Others", careers: { medical: 3, psychology: 2 } },
+                        { text: "Creative Projects", careers: { design: 3, media: 2 } },
+                        { text: "Data Analysis", careers: { data_science: 3, research: 2 } }
+                    ]
+                },
+                // Add more questions...
+            ],
+            careers: {
+                engineering: {
+                    streams: ["Computer", "Mechanical", "Electrical"],
+                    skills: ["Mathematics", "Problem Solving", "Technical Skills"],
+                    chartColor: "#3498db"
+                },
+                medical: {
+                    specializations: ["Cardiology", "Neurology", "Pediatrics"],
+                    skills: ["Biology", "Empathy", "Attention to Detail"],
+                    chartColor: "#e74c3c"
+                },
+                // Add more careers...
+            }
+        };
+
+        let currentQuestion = 0;
+        let careerScores = {};
+        let selectedStream = "";
+
+        function initializeAssessment() {
+            careerData.questions.forEach((question, index) => {
+                const questionHTML = `
+                    <div class="question-card ${index === 0 ? 'active-question' : ''}">
+                        <h3>${question.text}</h3>
+                        <div class="options-grid">
+                            ${question.options.map(option => `
+                                <div class="option" onclick="selectOption(${index}, ${question.options.indexOf(option)}, ${JSON.stringify(option.careers)})">
+                                    ${option.text}
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+                document.getElementById('question-container').innerHTML += questionHTML;
+            });
+        }
+
+        function selectOption(questionIndex, optionIndex, careerImpact) {
+            // Update career scores
+            Object.entries(careerImpact).forEach(([career, score]) => {
+                careerScores[career] = (careerScores[career] || 0) + score;
+            });
+
+            // Show next question or results
+            if (currentQuestion < careerData.questions.length - 1) {
+                document.querySelectorAll('.question-card')[currentQuestion].classList.remove('active-question');
+                currentQuestion++;
+                document.querySelectorAll('.question-card')[currentQuestion].classList.add('active-question');
+            } else {
+                showResults();
+            }
+        }
+
+        function showResults() {
+            document.getElementById('question-container').style.display = 'none';
+            document.getElementById('result-card').style.display = 'block';
+            
+            // Process results
+            const topCareer = Object.entries(careerScores).sort((a, b) => b[1] - a[1])[0][0];
+            const careerInfo = careerData.careers[topCareer];
+            
+            // Display career details
+            document.getElementById('career-details').innerHTML = `
+                <h3>Recommended Career: ${topCareer.toUpperCase()}</h3>
+                ${careerInfo.streams ? `<p>Suggested Streams: ${careerInfo.streams.join(', ')}</p>` : ''}
+                <p>Key Skills Required: ${careerInfo.skills.join(', ')}</p>
+            `;
+
+            // Generate chart
+            const ctx = document.getElementById('careerChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'radar',
+                data: {
+                    labels: Object.keys(careerScores),
+                    datasets: [{
+                        label: 'Career Aptitude',
+                        data: Object.values(careerScores),
+                        backgroundColor: 'rgba(52, 152, 219, 0.2)',
+                        borderColor: '#3498db',
+                        pointBackgroundColor: '#3498db'
+                    }]
+                },
+                options: {
+                    scales: {
+                        r: {
+                            beginAtZero: true,
+                            max: Math.max(...Object.values(careerScores)) + 2
+                        }
+                    }
+                }
+            });
+        }
+
+        // Initialize the assessment
+        initializeAssessment();
+    </script>
+</body>
+</html>

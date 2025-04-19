@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Career Visualization</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background-color: #f4f4f9;
+    }
+
+    header {
+      background-color: #003366;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .explore-container {
+      padding: 40px 20px;
+    }
+
+    .explore-header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .career-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .career-card {
+      background-color: #fff;
+      width: 320px;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .career-card:hover {
+      transform: translateY(-10px);
+    }
+
+    .career-card h3 {
+      margin-top: 0;
+      color: #003366;
+    }
+
+    .career-card p {
+      color: #555;
+    }
+
+    iframe {
+      width: 100%;
+      height: 180px;
+      border-radius: 10px;
+      margin-top: 10px;
+    }
+
+    .back-button {
+      display: block;
+      margin: 40px auto 20px;
+      padding: 12px 24px;
+      background-color: #003366;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      text-align: center;
+      width: fit-content;
+    }
+
+    .back-button:hover {
+      background-color: #0055aa;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Explore Career Options</h1>
+  </header>
+
+  <section class="explore-container">
+    <div class="explore-header">
+      <h2>Visualize Different Career Paths</h2>
+      <p>Watch videos to understand the real-world experiences of various professions.</p>
+    </div>
+
+    <div class="career-list">
+      <!-- Career Cards -->
+      <div class="career-card">
+        <h3>Engineering</h3>
+        <p>Explore the journey of engineers who build and innovate.</p>
+        <iframe src="https://www.youtube.com/embed/40qk5mX7Nyo" allowfullscreen></iframe>
+      </div>
+
+      <div class="career-card">
+        <h3>Doctor / Surgeon</h3>
+        <p>See what a day in the life of a doctor looks like.</p>
+        <iframe src="https://www.youtube.com/embed/j6XWq3VnR4E" allowfullscreen></iframe>
+      </div>
+
+      <div class="career-card">
+        <h3>Data Scientist</h3>
+        <p>Learn how data scientists solve real-world challenges with data.</p>
+        <iframe src="https://www.youtube.com/embed/xC-c7E5PK0Y" allowfullscreen></iframe>
+      </div>
+
+      <div class="career-card">
+        <h3>Graphic Designer</h3>
+        <p>Discover how creative visuals are crafted by professionals.</p>
+        <iframe src="https://www.youtube.com/embed/t1vZzY7mWVE" allowfullscreen></iframe>
+      </div>
+
+      <div class="career-card">
+        <h3>Teacher / Educator</h3>
+        <p>Step into the world of teaching and shaping futures.</p>
+        <iframe src="https://www.youtube.com/embed/s7a6tltEZM0" allowfullscreen></iframe>
+      </div>
+
+      <div class="career-card">
+        <h3>Software Developer</h3>
+        <p>See how software engineers build apps and systems.</p>
+        <iframe src="https://www.youtube.com/embed/8B4w3Vx50jU" allowfullscreen></iframe>
+      </div>
+
+      <div class="career-card">
+        <h3>Entrepreneur</h3>
+        <p>Understand what it takes to build and run a business.</p>
+        <iframe src="https://www.youtube.com/embed/GN9qV1bvl7E" allowfullscreen></iframe>
+      </div>
+
+      <div class="career-card">
+        <h3>Lawyer / Advocate</h3>
+        <p>Watch how legal professionals work in courtrooms and firms.</p>
+        <iframe src="https://www.youtube.com/embed/BTkCqkN0yWk" allowfullscreen></iframe>
+      </div>
+
+      <div class="career-card">
+        <h3>Journalist / Media</h3>
+        <p>Explore how journalists uncover and report the news.</p>
+        <iframe src="https://www.youtube.com/embed/KiMGpNxrCPE" allowfullscreen></iframe>
+      </div>
+
+      <div class="career-card">
+        <h3>Pilot</h3>
+        <p>Experience what it’s like to fly commercial planes.</p>
+        <iframe src="https://www.youtube.com/embed/0zvRuL-CUFs" allowfullscreen></iframe>
+      </div>
+    </div>
+
+    <a class="back-button" href="index.html">⬅ Back to Main Page</a>
+  </section>
+</body>
+</html>

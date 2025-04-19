@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Explore Careers</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+    }
+
+    header {
+      background-color: #003366;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .explore-container {
+      padding: 40px 20px;
+      background-color: #f4f4f9;
+    }
+
+    .explore-header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+
+    .filters label {
+      font-weight: bold;
+    }
+
+    .filters select {
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      font-size: 1em;
+    }
+
+    .career-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .career-card {
+      background-color: #fff;
+      width: 300px;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .career-card:hover {
+      transform: translateY(-10px);
+    }
+
+    .career-card h3 {
+      margin-top: 0;
+      color: #003366;
+    }
+
+    .career-card p {
+      color: #555;
+    }
+
+    .career-card ul {
+      padding-left: 20px;
+      color: #333;
+    }
+
+    .back-button {
+      display: block;
+      margin: 40px auto 20px;
+      padding: 12px 24px;
+      background-color: #003366;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      text-align: center;
+      width: fit-content;
+    }
+
+    .back-button:hover {
+      background-color: #0055aa;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Explore Career Options</h1>
+  </header>
+
+  <section class="explore-container">
+    <div class="explore-header">
+      <h2>Find Careers Based on Your Interests</h2>
+      <p>Use filters to explore careers by industry, education level, and salary range.</p>
+    </div>
+
+    <div class="filters">
+      <label>Industry:
+        <select id="industryFilter">
+          <option>All</option>
+          <option>Technology</option>
+          <option>Healthcare</option>
+          <option>Business</option>
+          <option>Creative Arts</option>
+          <option>Education</option>
+          <option>Finance</option>
+          <option>Engineering</option>
+          <option>Legal</option>
+        </select>
+      </label>
+      <label>Education Level:
+        <select id="educationFilter">
+          <option>All</option>
+          <option>High School</option>
+          <option>Bachelor's</option>
+          <option>Master's</option>
+          <option>Doctorate</option>
+        </select>
+      </label>
+      <label>Salary Range:
+        <select id="salaryFilter">
+          <option>All</option>
+          <option>Low</option>
+          <option>Medium</option>
+          <option>High</option>
+        </select>
+      </label>
+    </div>
+
+    <div class="career-list">
+      <!-- Example Career Cards -->
+      <div class="career-card" data-industry="Technology" data-education="Bachelor's" data-salary="High">
+        <h3>Software Engineer</h3>
+        <p>Industry: Technology</p>
+        <p>Education: Bachelor's in CS</p>
+        <p>Salary: High</p>
+        <ul>
+          <li><strong>Pros:</strong> High demand, remote work</li>
+          <li><strong>Cons:</strong> Long screen time</li>
+        </ul>
+      </div>
+
+      <div class="career-card" data-industry="Healthcare" data-education="Bachelor's" data-salary="Medium">
+        <h3>Registered Nurse</h3>
+        <p>Industry: Healthcare</p>
+        <p>Education: Bachelor's in Nursing</p>
+        <p>Salary: Medium</p>
+        <ul>
+          <li><strong>Pros:</strong> Job security</li>
+          <li><strong>Cons:</strong> Physically demanding</li>
+        </ul>
+      </div>
+
+      <div class="career-card" data-industry="Creative Arts" data-education="Bachelor's" data-salary="Medium">
+        <h3>Graphic Designer</h3>
+        <p>Industry: Creative Arts</p>
+        <p>Education: Design Degree</p>
+        <p>Salary: Medium</p>
+        <ul>
+          <li><strong>Pros:</strong> Creative freedom</li>
+          <li><strong>Cons:</strong> Competitive market</li>
+        </ul>
+      </div>
+
+      <div class="career-card" data-industry="Business" data-education="Bachelor's" data-salary="High">
+        <h3>Entrepreneur</h3>
+        <p>Industry: Business</p>
+        <p>Education: Optional</p>
+        <p>Salary: Varies</p>
+        <ul>
+          <li><strong>Pros:</strong> Independence</li>
+          <li><strong>Cons:</strong> High risk</li>
+        </ul>
+      </div>
+
+      <div class="career-card" data-industry="Engineering" data-education="Bachelor's" data-salary="High">
+        <h3>Mechanical Engineer</h3>
+        <p>Industry: Engineering</p>
+        <p>Education: B.Tech in Mechanical</p>
+        <p>Salary: High</p>
+        <ul>
+          <li><strong>Pros:</strong> Versatile field</li>
+          <li><strong>Cons:</strong> Needs ongoing training</li>
+        </ul>
+      </div>
+
+      <div class="career-card" data-industry="Healthcare" data-education="Doctorate" data-salary="High">
+        <h3>Doctor</h3>
+        <p>Industry: Healthcare</p>
+        <p>Education: MBBS, Doctorate</p>
+        <p>Salary: High</p>
+        <ul>
+          <li><strong>Pros:</strong> Respected profession</li>
+          <li><strong>Cons:</strong> Stressful</li>
+        </ul>
+      </div>
+
+      <div class="career-card" data-industry="Technology" data-education="Bachelor's" data-salary="Medium">
+        <h3>Web Developer</h3>
+        <p>Industry: Technology</p>
+        <p>Education: Bachelor's or Bootcamp</p>
+        <p>Salary: Medium</p>
+        <ul>
+          <li><strong>Pros:</strong> High demand</li>
+          <li><strong>Cons:</strong> Constant learning</li>
+        </ul>
+      </div>
+
+      <div class="career-card" data-industry="Legal" data-education="Doctorate" data-salary="High">
+        <h3>Lawyer</h3>
+        <p>Industry: Legal</p>
+        <p>Education: Law Degree</p>
+        <p>Salary: High</p>
+        <ul>
+          <li><strong>Pros:</strong> High income</li>
+          <li><strong>Cons:</strong> Intense studies</li>
+        </ul>
+      </div>
+
+      <div class="career-card" data-industry="Finance" data-education="Bachelor's" data-salary="High">
+        <h3>Investment Banker</h3>
+        <p>Industry: Finance</p>
+        <p>Education: Bachelor's in Finance</p>
+        <p>Salary: High</p>
+        <ul>
+          <li><strong>Pros:</strong> Lucrative</li>
+          <li><strong>Cons:</strong> Long hours</li>
+        </ul>
+      </div>
+
+      <div class="career-card" data-industry="Education" data-education="Master's" data-salary="Medium">
+        <h3>Professor</h3>
+        <p>Industry: Education</p>
+        <p>Education: Master's or PhD</p>
+        <p>Salary: Medium</p>
+        <ul>
+          <li><strong>Pros:</strong> Teaching passion</li>
+          <li><strong>Cons:</strong> Research pressure</li>
+        </ul>
+      </div>
+
+      <div class="career-card" data-industry="Creative Arts" data-education="High School" data-salary="Medium">
+        <h3>Photographer</h3>
+        <p>Industry: Creative Arts</p>
+        <p>Education: Self-taught/Certificate</p>
+        <p>Salary: Medium</p>
+        <ul>
+          <li><strong>Pros:</strong> Artistic work</li>
+          <li><strong>Cons:</strong> Inconsistent income</li>
+        </ul>
+      </div>
+      <!-- Add more cards as needed -->
+    </div>
+
+    <a class="back-button" href="index.html">⬅ Back to Main Page</a>
+  </section>
+
+  <script>
+    const industryFilter = document.getElementById("industryFilter");
+    const educationFilter = document.getElementById("educationFilter");
+    const salaryFilter = document.getElementById("salaryFilter");
+    const careerCards = document.querySelectorAll(".career-card");
+
+    function applyFilters() {
+      const industry = industryFilter.value;
+      const education = educationFilter.value;
+      const salary = salaryFilter.value;
+
+      careerCards.forEach(card => {
+        const cardIndustry = card.getAttribute("data-industry");
+        const cardEducation = card.getAttribute("data-education");
+        const cardSalary = card.getAttribute("data-salary");
+
+        const matchIndustry = industry === "All" || cardIndustry === industry;
+        const matchEducation = education === "All" || cardEducation === education;
+        const matchSalary = salary === "All" || cardSalary === salary;
+
+        card.style.display = (matchIndustry && matchEducation && matchSalary) ? "block" : "none";
+      });
+    }
+
+    industryFilter.addEventListener("change", applyFilters);
+    educationFilter.addEventListener("change", applyFilters);
+    salaryFilter.addEventListener("change", applyFilters);
+  </script>
+</body>
+</html>

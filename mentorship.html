@@ -1,0 +1,147 @@
+<!-- mentorship.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mentorship & Career Guidance</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: #f4f4f9;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #003366;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .mentorship-container {
+      padding: 40px 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .mentorship-intro {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .mentor-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .mentor-card {
+      background-color: #fff;
+      width: 300px;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+      text-align: center;
+    }
+
+    .mentor-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .mentor-card h3 {
+      margin-top: 0;
+      color: #003366;
+    }
+
+    .mentor-card p {
+      color: #555;
+    }
+
+    .mentor-card .charge {
+      font-weight: bold;
+      margin: 10px 0;
+      color: #007BFF;
+    }
+
+    .mentor-card a {
+      display: inline-block;
+      padding: 10px 15px;
+      background-color: #ffcc00;
+      color: #003366;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: bold;
+      margin-top: 10px;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .mentor-card a:hover {
+      background-color: #ffc107;
+      transform: scale(1.05);
+    }
+    .back-button {
+      display: block;
+      margin: 40px auto 20px;
+      padding: 12px 24px;
+      background-color: #003366;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      text-align: center;
+      width: fit-content;
+    }
+
+    .back-button:hover {
+      background-color: #0055aa;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Mentorship & Career Guidance</h1>
+  </header>
+
+  <section class="mentorship-container">
+    <div class="mentorship-intro">
+      <h2>Connect with Certified Career Mentors</h2>
+      <p>Book a session with top industry experts and career coaches to receive personalized guidance and support.</p>
+    </div>
+
+    <div class="mentor-grid">
+      <div class="mentor-card">
+        <h3>Dr. Chandramouli Haldar</h3>
+        <p>Senior Career Counselor | 12+ years experience</p>
+        <p class="charge">₹499 / 30 mins</p>
+        <a href="#">Book a Call</a>
+      </div>
+
+      <div class="mentor-card">
+        <h3>Mr. Tushkar Karmakar</h3>
+        <p>Tech Industry Mentor | Software Engineering</p>
+        <p class="charge">₹399 / 30 mins</p>
+        <a href="#">Book a Call</a>
+      </div>
+
+      <div class="mentor-card">
+        <h3>Mr. Shuvodeep Guria</h3>
+        <p>Design Coach | UI/UX Specialist</p>
+        <p class="charge">₹299 / 30 mins</p>
+        <a href="#">Book a Call</a>
+      </div>
+
+      <div class="mentor-card">
+        <h3>Mr. Sourodip Sarkar</h3>
+        <p>Entrepreneurship Advisor | Business Coach</p>
+        <p class="charge">₹499 / 45 mins</p>
+        <a href="#">Book a Call</a>
+      </div>
+    </div>
+    <a class="back-button" href="index.html">⬅ Back to Main Page</a>
+  </section>
+</body>
+</html>
