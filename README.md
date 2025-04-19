@@ -35,7 +35,7 @@ The **AI-Based Career Guidance Web Application** is a smart, student-focused pla
 #### 🤝 Real-Time Mentor Chat or Video Call
 - **Why?** Offers personalized guidance through experienced professionals.
 
-### 🤖 Career Help Bot (Botpress Integration)
+### 🤖 Career Help Bot 
 
 #### 💡 Chat Support
 - **Why?** Provides 24/7 instant answers to common questions, reducing dependence on human counselors.
@@ -52,7 +52,7 @@ The **AI-Based Career Guidance Web Application** is a smart, student-focused pla
 | Feature                  | Benefit                                               |
 |-------------------------|--------------------------------------------------------|
 | 🎯 Career Filters        | Easy exploration based on interests                   |
-| 🤖 Botpress Chatbot      | Real-time, interactive support 24/7                   |
+| 🤖  Chatbot              | Real-time, interactive support 24/7                   |
 | 📚 Career Cards          | Clear, structured career information                  |
 | 🧭 Personalized Experience | Tailored user experience based on inputs             |
 | 🔄 Accessible UI         | Responsive design for all devices                     |
