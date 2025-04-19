@@ -1,0 +1,10 @@
+career_id,career_name,description,category,required_skills,avg_salary,demand
+0,Computer Science Engineer,Design and develop software systems,Engineering,"Programming, Algorithms, Math",80000,High
+1,Data Scientist,Analyze complex datasets,Tech,"Statistics, ML, Python",95000,Very High
+2,Digital Marketer,Manage online campaigns,Business,"SEO, Social Media, Analytics",60000,High
+3,Biomedical Engineer,Develop medical equipment,Medical,"Biology, Engineering, Design",75000,Medium
+4,Graphic Designer,Create visual content,Arts,"Creativity, Adobe Tools, Design",50000,Medium
+5,Financial Analyst,Analyze financial data,Business,"Accounting, Excel, Analysis",65000,High
+6,AI Engineer,Build intelligent systems,Tech,"Python, ML, Deep Learning",110000,Very High
+7,Environmental Scientist,Study environmental issues,Science,"Biology, Chemistry, Research",70000,Medium
+8,Robotics Engineer,Build automated systems,Engineering,"Robotics, CAD, Electronics",90000,High
