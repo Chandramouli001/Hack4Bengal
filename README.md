@@ -83,10 +83,4 @@ The **AI-Based Career Guidance Web Application** is a smart, student-focused pla
 
 ---
 
-## 📌 Note
-Let us know if you'd like a:
-- 📄 PDF version of this document
-- 📝 GitHub README format
-- 🧑‍💻 Developer Docs
-- 🧩 Presentation-ready deck
 
